@@ -72,8 +72,7 @@ source bin/utils
 parseConfig
 
 JAVA_OPTS="-server -XX:+DisableExplicitGC ${wrapper_java_additional}"
-echo $wrapper_java_initmemory
-echo $wrapper_java_maxmemory
+
 if [ -z "${JAVA_Xms}" ]; then
 	[ -z "${wrapper_java_initmemory}" ] || JAVA_OPTS="$JAVA_OPTS -Xms${wrapper_java_initmemory}m"
 else

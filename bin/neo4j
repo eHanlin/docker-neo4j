@@ -85,6 +85,13 @@ else
 	JAVA_OPTS="$JAVA_OPTS -Xmx${JAVA_Xmx}m"
 fi
 
+if [ -z "${JAVA_Xss}" ]; then
+	[ -z "${wrapper_java_maxmemory}" ] || JAVA_OPTS="$JAVA_OPTS -Xss${wrapper_java_maxmemory}m"
+else
+	JAVA_OPTS="$JAVA_OPTS -Xss${JAVA_Xss}m"
+fi
+
+
 #NEO4J_SERVER_PORT=`( egrep "^org.neo4j.server.webserver.port" $NEO4J_CONFIG/neo4j-server.properties || echo 7474 ) | sed -e 's/.*=//'`
 NEO4J_SERVER_PORT=${org_neo4j_server_webserver_port:=7474}
 
